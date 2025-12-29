@@ -26,15 +26,40 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Remplit les données validées (nom, email, etc.)
+        $user->fill($request->validated());
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        if ($request->hasFile('image')) {
+            // 1. Supprimer l'ancienne image si elle existe
+            if (!empty($user->image)) {
+                $oldImagePath = public_path('back_auth/assets/profile/' . $user->image);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
+            }
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+            // 2. Préparer et déplacer le nouveau fichier
+            $file = $request->file('image');
+            // On utilise time() pour être sûr d'avoir un nom unique
+            $file_name = time() . '.' . $file->extension();
+            $file->move(public_path('back_auth/assets/profile'), $file_name);
+
+            // 3. Enregistrer le nom en base de données
+            $user->image = $file_name;
+        }
+
+        // Pas besoin de refaire $user->name = $request->name; 
+        // car le ->fill($request->validated()) au début s'en occupe déjà !
+
+        $user->save();
+
+        return Redirect::route('profile.edit')->with('status', 'Profil modifié avec succès');
     }
 
     /**
@@ -42,7 +67,7 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
+        $request->validate([
             'password' => ['required', 'current_password'],
         ]);
 

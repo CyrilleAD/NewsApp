@@ -11,15 +11,15 @@
 </head>
 
 <body>
-    {# Main wrapper #}
+    <!-- Main wrapper -->
     <div class="main-wrapper">
-        {# Debut Header #}
+        <!-- Debut Header -->
         @include('back.partials.header')
-        {# Fin Header #}
-        {# ------------------ #}
-        {# Debut Sidebar #}
+        <!-- Fin Header -->
+        <!-- Debut Sidebar -->
         @include('back.partials.sidebar')
-        {# Fin Sidebar #} {# --------------------- #} {# Contenu de la page #}
+        <!-- Fin Sidebar -->
+        <!-- Contenu de la page -->
         <div class="page-wrapper">
             <div class="content container-fluid">
                 <div class="page-header">
@@ -28,11 +28,11 @@
                 @yield('dashboard-content')
             </div>
         </div>
-        {# Fin Contenu de la page #}
+        <!-- Fin Contenu de la page -->
     </div>
-    {# Scripts dashboard #}
+    <!-- Scripts dashboard -->
     @include('back.partials.scripts')
-    {# Fin Script Dashboard #}
+    <!-- Fin Script Dashboard -->
 </body>
 
 </html>

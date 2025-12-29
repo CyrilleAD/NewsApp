@@ -6,7 +6,7 @@
     <div class="page-header">
         <div class="row">
             <div class="col-sm-12 mt-5">
-                <h3 class="page-title mt-3">Hello, Bonjour John Doe!</h3>
+                <h3 class="page-title mt-3">Hello, Bonjour {{ Auth::user()->name }} !</h3>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item active">Accueil</li>
                 </ul>
@@ -136,7 +136,7 @@
                                     <td class="text-nowrap"></td>
                                     <td>Intelligence artificielle</td>
                                     <td>Tech</td>
-                                    <td class="text-center">John Doe</td>
+                                    <td class="text-center">{{ Auth::user()->name }}</td>
                                     <td class="text-center">
                                         <span class="badge badge-pill bg-success inv-badge">PUBLIE</span>
                                     </td>

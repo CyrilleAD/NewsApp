@@ -1,11 +1,13 @@
 <div class="header">
     <div class="header-left">
         <a href="index.html" class="logo">
-            <img src="{{ asset('back_auth/assets/img/logo.png') }}" width="50" height="70" alt="logo" />
-            <span class="logoclass">John Doe</span>
+            <img src="{{asset('back_auth/assets/profile/' . \Illuminate\Support\Facades\Auth::user()->image)}}"
+                width="50" height="70" alt="logo" />
+            <span class="logoclass">{{ \Illuminate\Support\Facades\Auth::user()->name }}</span>
         </a>
         <a href="index.html" class="logo logo-small">
-            <img src="{{ asset('back_auth/assets/img/logo.png') }}" alt="Logo" width="30" height="30" />
+            <img src="{{asset('back_auth/assets/profile/' . \Illuminate\Support\Facades\Auth::user()->image)}}"
+                alt="Logo" width="30" height="30" />
         </a>
     </div>
     <a href="javascript:void(0);" id="toggle_btn">
@@ -17,8 +19,8 @@
         <li class="nav-item dropdown has-arrow">
             <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                 <span class="user-img"><img class="rounded-circle"
-                        src="{{ asset('back_auth/assets/img/profiles/avatar-01.png') }}" width="31"
-                        alt="John Doe" /></span>
+                        src="{{asset('back_auth/assets/profile/' . \Illuminate\Support\Facades\Auth::user()->image)}}"
+                        width="31" alt="John Doe" /></span>
             </a>
             <div class="dropdown-menu">
                 <div class="user-header">
@@ -27,13 +29,13 @@
                             class="avatar-img rounded-circle" />
                     </div>
                     <div class="user-text">
-                        <h6>John Doe</h6>
+                        <h6>{{ Auth::user()->name }}</h6>
                         <p class="text-muted mb-0">Administrateur</p>
                     </div>
                 </div>
-                <a class="dropdown-item" href="profile.html">Profile</a>
+                <a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a>
                 <a class="dropdown-item" href="settings.html">Paramettre</a>
-                <a class="dropdown-item" href="login.html">Deconnexion</a>
+                <a class="dropdown-item" href="{{ route('logout') }}">Deconnexion</a>
             </div>
         </li>
     </ul>
