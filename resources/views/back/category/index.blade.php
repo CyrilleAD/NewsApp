@@ -53,30 +53,29 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-
-                            <div id="delete_asset" class="modal fade delete-modal" role="dialog">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-body text-center">
-                                            <img src="{{ asset('back_auth/assets/img/sent.png') }}" alt="" width="50"
-                                                height="46" />
-                                            <h3 class="delete_class">
-                                                Etes vous sure de vouloir supprimer cet element ?
-                                            </h3>
-                                            <div class="m-t-20">
-                                                <form action="{{ route('category.destroy', $category) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a href="{{ route('category.destroy', $category) }}"
-                                                        class="btn btn-white" data-dismiss="modal">Fermer</a>
-                                                    <button type="submit" class="btn btn-danger">Supprimer</button>
-                                                </form>
-                                            </div>
+                        </table>
+                        <div id="delete_asset" class="modal fade delete-modal" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body text-center">
+                                        <img src="{{ asset('back_auth/assets/img/sent.png') }}" alt="" width="50"
+                                            height="46" />
+                                        <h3 class="delete_class">
+                                            Etes vous sure de vouloir supprimer cet element ?
+                                        </h3>
+                                        <div class="m-t-20">
+                                            <form action="{{ route('category.destroy', $category) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="{{ route('category.destroy', $category) }}" class="btn btn-white"
+                                                    data-dismiss="modal">Fermer</a>
+                                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </table>
+                        </div>
                     </div>
                 </div>
             </div>

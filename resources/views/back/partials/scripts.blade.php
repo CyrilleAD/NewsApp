@@ -6,6 +6,8 @@
 <script src="{{ asset('back_auth/assets/plugins/raphael/raphael.min.js') }}"></script>
 <script src="{{ asset('back_auth/assets/plugins/morris/morris.min.js') }}"></script>
 <script src="{{ asset('back_auth/assets/js/chart.morris.js') }}"></script>
+<script src="{{ asset('back_auth/assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('back_auth/assets/plugins/datatables/datatables.min.js') }}"></script>
 <script src="{{ asset('back_auth/assets/js/script.js') }}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"
