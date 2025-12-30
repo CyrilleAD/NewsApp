@@ -20,11 +20,11 @@
                         <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none">
                         <li>
-                            <a href="all-categories.html"> Tous les catégories </a>
+                            <a href="{{ route('category.index') }}"> Tous les catégories </a>
                         </li>
 
                         <li>
-                            <a href="add-categories.html"> Ajouter une catégorie </a>
+                            <a href="{{ route('category.create') }}"> Ajouter une catégorie </a>
                         </li>
                     </ul>
                 </li>
