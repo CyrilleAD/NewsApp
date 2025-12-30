@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
     <title>@yield('title')</title>
-    {{-- Dashboard - Links --}}
+    {# Dashboard - Links #}
     @include('back.partials.styles')
-    {{-- Fin Dashbord Link --}}
+    {# Fin Dashbord Link #}
 </head>
 
 <body>
@@ -34,33 +34,26 @@
     @include('back.partials.scripts')
     <!-- Fin Script Dashboard -->
 
-    @php
-        $success = session()->pull('success');
-        $error = session()->pull('error');
-    @endphp
+    @if(session()->get('error'))
+        <script>
+            iziToast.error({
+                title: 'Erreur',
+                position: 'topRight',
+                message: '{{ session()->get('error') }}',
+            });
+        </script>
+    @endif
 
-    <script>
-        // On vérifie si la page n'est pas chargée depuis le cache (bouton retour)
-        if (!(window.performance && window.performance.navigation.type === 2)) {
-            @if($error)
-                iziToast.error({
-                    title: 'Erreur',
-                    position: 'topRight',
-                    message: "{{ addslashes($error) }}",
-                });
-            @endif
+    @if(session()->get('success'))
+        <script>
+            iziToast.success({
+                title: 'Success',
+                position: 'topRight',
+                message: '{{ session()->get('success') }}',
+            });
+        </script>
+    @endif
 
-            @if($success)
-                iziToast.success({
-                    title: 'Succès',
-                    position: 'topRight',
-                    message: "{{ addslashes($success) }}",
-                });
-            @endif
-        }
-    </script>
-
-    @yield('scripts')
 </body>
 
 </html>
