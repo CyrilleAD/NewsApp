@@ -33,6 +33,8 @@
     <!-- Scripts dashboard -->
     @include('back.partials.scripts')
     <!-- Fin Script Dashboard -->
+
+
 </body>
 
 </html>

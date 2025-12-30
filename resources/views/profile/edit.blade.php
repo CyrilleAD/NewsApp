@@ -138,18 +138,34 @@
                             <h5 class="card-title">Modifier le mot de passe</h5>
                             <div class="row">
                                 <div class="col-md-10 col-lg-6">
-                                    <form>
+                                    @if (session('status') === 'password-updated')
+                                        <div class="alert alert-success">
+                                            Le mot de passe a été mis à jour avec succès.
+                                        </div>
+                                    @endif
+                                    <form action="{{ route('password.update')}}" method="POST">
+                                        @csrf
+                                        @method('PUT')
                                         <div class="form-group">
                                             <label>Ancien mot de passe</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" name="current_password" class="form-control">
+                                            @error('current_password')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label>Nouveau mot de passe</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" name="password" class="form-control">
+                                            @error('password')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label>Confirmer motde passe</label>
-                                            <input type="password" class="form-control">
+                                            <input type="password" name="password_confirmation" class="form-control">
+                                            @error('password_confirmation')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <button class="btn btn-primary" type="submit">Enregistrer les modifications</button>
                                     </form>
@@ -161,4 +177,21 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+            console.log("Script profile chargé");
+
+            @if ($errors->has('current_password') || $errors->has('password') || $errors->has('password_confirmation'))
+                console.log("Erreurs de mot de passe détectées");
+                $('.nav-tabs a[href="#password_tab"]').tab('show');
+            @endif
+
+            @if (session('status') === 'password-updated')
+                console.log("Changement de mot de passe réussi");
+                $('.nav-tabs a[href="#password_tab"]').tab('show');
+            @endif
+                    });
+    </script>
+
 @endsection
