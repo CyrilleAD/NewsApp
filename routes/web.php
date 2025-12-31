@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Article\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,8 @@ Route::middleware('auth')->group(function () {
 
 //Partie categorie
 Route::resource('/category', CategoryController::class);
+
+//Partie article
+Route::resource('/article', ArticleController::class);
 
 require __DIR__ . '/auth.php';

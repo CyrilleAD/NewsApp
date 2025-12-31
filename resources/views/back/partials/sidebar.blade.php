@@ -11,8 +11,8 @@
                     <a href="#"><i class="fas fa-edit"></i> <span> Articles </span>
                         <span class="menu-arrow"></span></a>
                     <ul class="submenu_class" style="display: none">
-                        <li><a href="all-article.html"> Tous les articles </a></li>
-                        <li><a href="add-article.html"> Ajouter un article </a></li>
+                        <li><a href="{{ route('article.index') }}"> Tous les articles </a></li>
+                        <li><a href="{{ route('article.create') }}"> Ajouter un article </a></li>
                     </ul>
                 </li>
                 <li class="submenu">

@@ -33,6 +33,7 @@
     <!-- Scripts dashboard -->
     @include('back.partials.scripts')
     <!-- Fin Script Dashboard -->
+    @yield('scripts')
 
     @if(session()->get('error'))
         <script>
