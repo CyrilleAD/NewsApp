@@ -76,7 +76,7 @@
                                                         <i class="fas fa-pencil-alt m-r-5"></i> Voir
                                                     </a>
                                                     <a class="dropdown-item" href="{{ route('article.edit', $article->slug) }}">
-                                                        <i class="fas fa-pencil-alt m-r-5"></i> Modifier
+                                                        <i class="fas fa-pencil-alt m-r-5"></i> le Modifier
                                                     </a>
                                                     <a class="dropdown-item btn-delete" href="#" data-toggle="modal"
                                                         data-target="#delete_asset"
@@ -116,7 +116,6 @@
         </div>
     </div>
 @endsection
-
 @section('scripts')
     <script>
         $(document).on('click', '.btn-delete', function () {
